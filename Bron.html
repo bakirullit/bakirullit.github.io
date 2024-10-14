@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фон с видео</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;  /* Масштабирование видео */
+      z-index: -1;  /* Отправить на задний план */
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop>
+    <source src="background.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+  <h1 style="color: white; text-align: center; margin-top: 40vh;"></h1>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In/Sign Up Page | Dan Aleko</title>
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Outfit", sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(bg.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .login-container {
+            width: 380px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(9px);
+            color: white;
+            border-radius: 14px;
+            padding: 30px 40px;
+        }
+        .login-container h1 {
+            font-size: 39px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .social-icons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .social-icons .icon {
+            display: inline-block;
+            font-size: 20px;
+            color: white;
+            margin: 0 10px;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 16px;
+            padding: 7px 10px;
+            transition: color 0.3s ease;
+        }
+        .social-icons .icon:hover {
+            color: #c2c2c2;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        input, button {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 60px;
+            font-size: 15px;
+            color: white;
+            text-indent: 15px;
+        }
+        input::placeholder {
+            color: white;
+        }
+        input:focus, button:focus {
+            border-color: transparent;
+        }
+        button {
+            background-color: #02a152;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.4s ease-in-out;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            text-align: center;
+            text-decoration: underline;
+            color: white;
+            transition: 0.4s ease-in-out;
+        }
+        a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-form" id="loginForm">
+            <h1>Sign In</h1>
+            <div class="form-message-container">
+                <span>Or use your email and password</span>
+            </div>
+            <form>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Sign In</button>
+                <a href="#">Forgot Your Password?</a>
+            </form>
+            <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+        </div>
+
+        <div class="signup-form hidden" id="signupForm">
+            <h1>Create An Account</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class='bx bxl-google-plus'></i></a>
+                <a href="#" class="icon"><i class='bx bxl-facebook'></i></a>
+                <a href="#" class="icon"><i class='bx bxl-github'></i></a>
+                <a href="#" class="icon"><i class='bx bxl-linkedin'></i></a>
+            </div>
+            <div class="form-message-container">
+                <span>Or use your email for registration</span>
+            </div>
+            <form>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" id="showLogin">Sign In</a></p>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const showSignupBtn = document.getElementById('showSignup');
+        const showLoginBtn = document.getElementById('showLogin');
+
+        showSignupBtn.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            signupForm.classList.remove('hidden');
+        });
+
+        showLoginBtn.addEventListener('click', () => {
+            loginForm.classList.remove('hidden');
+            signupForm.classList.add('hidden');
+        });
+    </script>
+
+</body>
+</html>
